@@ -1,0 +1,275 @@
+C
+
+# 6weeks
+
+### 함수
+
+> C 프로그램은 함수(function) 의 집합 
+>
+>  함수란 특정한 작업을 하도록 만들어진 독립적인 단위 모듈이다.
+>
+> 함수에 입력시키는 것을 **매개변수(parameter)** 또는 **전달인자 (인수, argument )** 라 함 
+>
+>  함수가 돌려주는 결과 값을 **반환값** 또는 **리턴값(return value)**이라 함
+
+* 입력                             
+
+  매개변수(parameter), 인자
+
+* 출력
+
+  반환값(return value), 리턴값
+
+* 반환값
+
+  리턴값이 없으면 리턴형 쓰는 자리에 void 
+
+   매개변수가 없으면 매개변수 쓰는 자리에 void
+
+  
+
+* 함수만들기: 전광판 함수
+
+``` c++
+#include <iostream>
+using namespace std;
+void display()
+{
+cout<<"안녕";
+}
+int main()
+{
+display();
+return 0;
+}
+```
+
+``` c++
+#include <iostream>
+using namespace std;
+void display();
+int main()
+{
+display();
+return 0;
+}
+void display()
+{
+cout << "안녕";
+}
+```
+
+
+
+* 함수만들기: 두배해서 출력
+
+```c++
+#include <iostream>
+using namespace std;
+void double_number(int x)
+{
+cout<< x * 2;
+}
+int main()
+{
+double_number(3);
+return 0;
+}
+
+```
+
+```c++
+#include <iostream>
+using namespace std;
+void double_number(int x);
+int main()
+{
+double_number(3);
+return 0;
+}
+void double_number(int x)
+{
+cout << x * 2;
+}
+```
+
+
+
+* 함수만들기: 두배해서 리턴하는 함수
+
+```c++
+#include <iostream>
+using namespace std;
+int double_number(int x)
+{
+return x * 2;
+}
+int main()
+{
+double_number(3);
+return 0;
+}
+```
+
+```c++
+#include <iostream>
+using namespace std;
+int double_number(int x);
+int main()
+{
+cout << double_number(3);
+return 0;
+}
+int double_number(int x)
+{
+return x * 2;
+}
+```
+
+* 리턴문
+
+>  결과 값을 호출한 함수로 반환
+>
+>  return문을 만나면 함수의 나머지 부분에 상관없이 함수의 실행을 종료하고 호출한 함수로 넘어감
+
+* 함수 만들기: 두 수를 더해서 리턴하는 함수
+
+```C++
+#include <iostream>
+using namespace std;
+int add(int x, int y)
+{
+return x + y;
+}
+int main()
+{
+int x;
+x = add(2, 3);
+cout<<x;
+return 0;
+}
+```
+
+```C++
+#include <iostream>
+using namespace std;
+int add(int x, int y);
+int main()
+{
+int x;
+x = add(2, 3);
+cout << x;
+return 0;
+}
+int add(int x, int y)
+{
+return x + y;
+}
+```
+
+* 함수 만들기: 자판기 함수
+
+```c++
+#include <iostream>
+using namespace std;
+char vending(int x)
+{
+if (x == 1) return 'A';
+else return 'B';
+}
+int main()
+{
+char x;
+x = vending(1);
+cout << x;
+return 0;
+}
+
+```
+
+```c++
+#include <iostream>
+using namespace std;
+char vending(int x);
+int main()
+{
+char x;
+x = vending(1);
+cout << x;
+return 0;
+}
+char vending(int x)
+{
+if (x == 1) return 'A';
+else return 'B';
+}
+```
+
+* 함수 만들기: 문자열 리턴 자판기 함수
+
+```c++
+#include <iostream>
+using namespace std;
+const char* vending(int x)
+{
+if (x == 1) return "커피";
+else return "유자차";
+}
+int main()
+{
+cout<<vending(1);
+return 0;
+}
+```
+
+```c++
+#include <iostream>
+using namespace std;
+char vending(int x)
+{
+if (x == 1) return 'A';
+else return 'B';
+}
+int main()
+{
+cout << vending(1);
+return 0;
+}
+```
+
+* 멤버함수의 선언과 정의
+
+> 클래스 내에 나타난 함수의 **프로토타입(prototype)**은 함수를 선언하는 것
+
+* 범위 지정 연산자
+
+> 멤버함수가 어느 클래스에 포함되어 있는지를 나타낼 때
+>
+> 함수 안에서 전역변수를 접근할 때
+
+* namespace
+
+> 모든 식별자가 유일하도록 보장하는 코드 영역을 정의
+
+* std namespace
+
+> cin, cout 등 C++ 표준 라이브러리의 네임스페이스
+
+* using 지시문(directive)
+
+> std 네임스페이스의 모든 것을 사용하고 싶다는 것을 알리는 것.
+
+* inline 함수
+
+> C에서 #define문에 의한 매크로 함수와 유사 
+>
+> C++에서는 함수 선언이나 정의 앞에 inline 이라는 키워드를 사용하여 매크로 함수의 부작용을 없애면서 같은 기능을 수행
+>
+> inline 함수는 컴파일러에 의해 처리되며 텍스트가 아닌 **함수 코드 블록의 복사본인 기계어 코드가 직접 삽입된다.**
+>
+> * inline 함수의 단점
+>
+> > inline 함수를 사용하면 프로그램의 전반적인 실행속도가 빨라지지만 코드가 작은 함수일 때와 호출 빈도가 낮을 때 사용하는 것이 좋다. 
+> >
+> > 함수의 코드크기가 큰 경우에는 inline 함수로 선언했다 할지라도 컴파일러가 일반 함수로 취급할 수 있다.
+
